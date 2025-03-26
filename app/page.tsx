@@ -82,16 +82,20 @@ export default function Home() {
       }}>
         <div style={{
           backgroundColor: 'white',
-          borderRadius: '0.5rem',
-          boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+          borderRadius: '1rem',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           overflow: 'hidden'
         }}>
-          <div style={{ 
-            padding: '1rem 1.5rem',
-            borderBottom: '1px solid #E5E7EB',
-            backgroundColor: '#F3F4F6'
+          <div style={{
+            padding: '1rem',
+            backgroundColor: '#F3F4F6',
+            borderBottom: '1px solid #E5E7EB'
           }}>
-            <div style={{ fontSize: '0.875rem', color: '#4B5563', marginBottom: '0.25rem' }}>
+            <div style={{ 
+              fontSize: '0.875rem', 
+              color: '#4B5563',
+              marginBottom: '0.5rem'
+            }}>
               Date: {today}
             </div>
             <div style={{ 
@@ -102,31 +106,71 @@ export default function Home() {
               P3
             </div>
             <h1 style={{ 
-              fontSize: '1.5rem',
+              fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
               fontWeight: 'bold',
-              textAlign: 'center',
-              color: '#1F2937'
+              color: '#111827',
+              margin: 0
             }}>
               MVCI Exchange Rate
             </h1>
           </div>
           <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <table style={{
+              width: '100%',
+              borderCollapse: 'collapse',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)'
+            }}>
               <thead>
-                <tr style={{ backgroundColor: '#F3F4F6' }}>
-                  <th style={{ padding: '1rem 1.5rem', textAlign: 'left', fontSize: '0.875rem', fontWeight: '600', color: '#4B5563', borderBottom: '1px solid #E5E7EB' }}>Package</th>
-                  <th style={{ width: '2rem', borderBottom: '1px solid #E5E7EB' }}></th>
-                  <th style={{ padding: '1rem 1.5rem', textAlign: 'left', fontSize: '0.875rem', fontWeight: '600', color: '#4B5563', borderBottom: '1px solid #E5E7EB' }}>Currency</th>
-                  <th style={{ width: '2rem', borderBottom: '1px solid #E5E7EB' }}></th>
-                  <th style={{ padding: '1rem 1.5rem', textAlign: 'left', fontSize: '0.875rem', fontWeight: '600', color: '#4B5563', borderBottom: '1px solid #E5E7EB' }}>Rate</th>
-                  <th style={{ width: '2rem', borderBottom: '1px solid #E5E7EB' }}></th>
-                  <th style={{ padding: '1rem 1.5rem', textAlign: 'left', fontSize: '0.875rem', fontWeight: '600', color: '#4B5563', borderBottom: '1px solid #E5E7EB' }}>USD</th>
+                <tr style={{ backgroundColor: '#F9FAFB' }}>
+                  <th style={{ 
+                    padding: '0.75rem',
+                    textAlign: 'left',
+                    fontWeight: '600',
+                    color: '#374151',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    Package
+                  </th>
+                  <th style={{ 
+                    padding: '0.75rem',
+                    textAlign: 'left',
+                    fontWeight: '600',
+                    color: '#374151',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    Currency
+                  </th>
+                  <th style={{ 
+                    padding: '0.75rem',
+                    textAlign: 'right',
+                    fontWeight: '600',
+                    color: '#374151',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    Exchange Rate
+                  </th>
+                  <th style={{ 
+                    padding: '0.75rem',
+                    textAlign: 'right',
+                    fontWeight: '600',
+                    color: '#374151',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    USD
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                {exchangeRates.map((rate) => (
-                  <tr key={rate.currency} style={{ borderBottom: '1px solid #E5E7EB' }}>
-                    <td style={{ padding: '1rem 1.5rem' }}>
+                {exchangeRates.map((rate, index) => (
+                  <tr key={index} style={{ 
+                    borderBottom: '1px solid #E5E7EB',
+                    backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#F9FAFB'
+                  }}>
+                    <td style={{ 
+                      padding: '0.75rem',
+                      color: '#374151',
+                      whiteSpace: 'nowrap'
+                    }}>
                       {rate.currency === 'IDR' ? (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                           <input
@@ -160,20 +204,26 @@ export default function Home() {
                         />
                       )}
                     </td>
-                    <td style={{ width: '2rem' }}></td>
-                    <td style={{ padding: '1rem 1.5rem', textAlign: 'center', fontWeight: '500', color: '#374151' }}>
+                    <td style={{ 
+                      padding: '0.75rem',
+                      color: '#374151',
+                      whiteSpace: 'nowrap'
+                    }}>
                       {rate.currency}
                     </td>
-                    <td style={{ width: '2rem' }}></td>
-                    <td style={{ padding: '1rem 1.5rem', textAlign: 'center', color: '#4B5563' }}>
+                    <td style={{ 
+                      padding: '0.75rem',
+                      textAlign: 'right',
+                      color: '#374151',
+                      whiteSpace: 'nowrap'
+                    }}>
                       {rate.rate.toFixed(5)}
                     </td>
-                    <td style={{ width: '2rem' }}></td>
                     <td style={{ 
-                      padding: '1rem 1.5rem', 
-                      textAlign: 'center', 
-                      fontWeight: 'bold',
-                      backgroundColor: calculateResult(amounts[rate.currency] || '', rate.rate) !== '0.00' ? '#FEF3C7' : 'transparent'
+                      padding: '0.75rem',
+                      textAlign: 'right',
+                      color: '#374151',
+                      whiteSpace: 'nowrap'
                     }}>
                       ${calculateResult(amounts[rate.currency] || '', rate.rate)}
                     </td>
