@@ -182,9 +182,10 @@ export default function Home() {
                               padding: '0.5rem',
                               border: '1px solid #E5E7EB',
                               borderRadius: '0.375rem',
-                              textAlign: 'right'
+                              textAlign: 'right',
+                              color: amounts[rate.currency] ? '#374151' : '#9CA3AF'
                             }}
-                            placeholder="Amount"
+                            placeholder="3900"
                           />
                           <span style={{ color: '#4B5563', fontWeight: '500' }}>,000</span>
                         </div>
