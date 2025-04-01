@@ -103,7 +103,7 @@ export default function Home() {
               color: '#4B5563',
               marginBottom: '0.5rem'
             }}>
-              P3
+              P4
             </div>
             <h1 style={{ 
               fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
