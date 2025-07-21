@@ -396,7 +396,7 @@ export default function Home() {
             marginBottom: '1.5rem',
             color: '#374151'
           }}>
-            JCB Convert
+            JCB Convert (HKD: {exchangeRates.find(rate => rate.currency === 'HKD')?.rate?.toFixed(5) || 'N/A'})
           </h2>
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
