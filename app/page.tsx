@@ -11,7 +11,7 @@ interface ExchangeRate {
 export default function Home() {
   const [amounts, setAmounts] = useState<{ [key: string]: string }>({});
   const [exchangeRates, setExchangeRates] = useState<ExchangeRate[]>([]);
-  const [currentPeriod, setCurrentPeriod] = useState('P5');
+  const [currentPeriod, setCurrentPeriod] = useState('');
   const [jcbUsd, setJcbUsd] = useState('');
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -150,7 +150,7 @@ export default function Home() {
       } else {
         setAdminMessage('Failed to save rates to API');
       }
-    } catch (error) {
+    } catch {
       setAdminMessage('Error saving rates to API');
     }
   };
@@ -224,7 +224,7 @@ export default function Home() {
               borderRadius: '0.375rem',
               display: 'inline-block'
             }}>
-              {currentPeriod}
+              {currentPeriod || 'Loading...'}
             </div>
             <h1 style={{ 
               fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',

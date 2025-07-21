@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { exchangeRateService, type ExchangeRate } from '@/lib/supabase';
+import { exchangeRateService } from '@/lib/supabase';
 
 export async function GET() {
   try {
@@ -48,7 +48,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const newRates: any[] = await request.json();
+    const newRates: Array<{currency: string; rate: number; lastUpdated?: string; period?: string}> = await request.json();
     
     // 转换数据格式以适应数据库
     const ratesToUpdate = newRates.map(rate => ({

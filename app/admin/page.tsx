@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation'; // Reserved for future use
 
 interface ExchangeRate {
   currency: string;
@@ -16,12 +16,12 @@ interface PeriodData {
 }
 
 export default function AdminPage() {
-  const router = useRouter();
+  // const router = useRouter(); // Reserved for future use
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [exchangeRates, setExchangeRates] = useState<ExchangeRate[]>([]);
   const [message, setMessage] = useState('');
-  const [currentPeriod, setCurrentPeriod] = useState('P5');
+  const [currentPeriod, setCurrentPeriod] = useState('');
   const [newPeriod, setNewPeriod] = useState('');
   const [savedPeriods, setSavedPeriods] = useState<string[]>([]);
 
@@ -132,7 +132,7 @@ export default function AdminPage() {
       } else {
         setMessage('Failed to save rates to API');
       }
-    } catch (error) {
+    } catch {
       setMessage('Error saving rates to API');
     }
   };
