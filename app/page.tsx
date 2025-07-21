@@ -61,7 +61,8 @@ export default function Home() {
   const calculateJcbHkd = (usdAmount: string): string => {
     const numUsd = parseFloat(usdAmount);
     if (isNaN(numUsd)) return '0.00';
-    const hkdRate = exchangeRates.find(rate => rate.currency === 'HKD')?.rate || 0;
+    const hkdRate = exchangeRates.find(rate => rate.currency === 'HKD')?.rate;
+    if (!hkdRate || hkdRate === 0) return '0.00';
     return (numUsd / hkdRate).toFixed(2);
   };
 
