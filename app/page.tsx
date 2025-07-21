@@ -27,6 +27,7 @@ export default function Home() {
   });
 
   useEffect(() => {
+    // 获取汇率数据
     fetch('/api/rates')
       .then(res => res.json())
       .then(data => {

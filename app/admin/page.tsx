@@ -27,6 +27,7 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
+      // 获取最新期间的汇率数据
       fetch('/api/rates')
         .then(res => res.json())
         .then(data => {
